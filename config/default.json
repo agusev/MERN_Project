@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://alex:4556@cluster0-huvel.mongodb.net/test?retryWrites=true",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "a5218dcb3c11e8dcc5d2",
+    "githubSecret": "aa6544a911a1b0dbb4d7d97ada8420232db42602"
+}
