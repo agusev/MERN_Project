@@ -30,6 +30,6 @@ app.use('/api/posts', require('./routes/api/posts'));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
-// kill -9 `lsof -i TCP:3000 | awk '/LISTEN/{print $2}'` to kill node PID
+app.listen(PORT, () =>
+    console.log(`Server started on port ${PORT}`)
+);
