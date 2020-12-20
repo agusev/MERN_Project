@@ -6,6 +6,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
+	CLEAR_PROFILE,
 } from '../actions/types';
 
 const initialState = {
@@ -50,6 +51,7 @@ export default function (state = initialState, action) {
 				loading: false,
 				user: null,
 			};
+
 		default:
 			return state;
 	}

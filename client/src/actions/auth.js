@@ -1,4 +1,3 @@
-import axios from 'axios';
 import api from '../utils/api';
 import { setAlert } from './alert';
 import {
@@ -9,19 +8,13 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
+	CLEAR_PROFILE,
 } from './types';
-import setAuthToken from '../utils/setAuthToken';
-import { set } from 'mongoose';
 
 // load user
 export const loadUser = () => async (dispatch) => {
-	if (localStorage.token) {
-		setAuthToken(localStorage.token);
-	}
-
 	try {
-		const res = await axios.get('/api/auth');
-		console.log('res:\n');
+		const res = await api.get('/auth');
 		dispatch({
 			type: USER_LOADED,
 			payload: res.data,
@@ -34,18 +27,9 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // register user
-export const register = ({ name, email, password }) => async (dispatch) => {
-	const config = {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-
-	const body = JSON.stringify({ name, email, password });
-
+export const register = (formData) => async (dispatch) => {
 	try {
-		const res = await axios.post('/api/users', body, config);
-		// const res = await axios.post('/api/users', { name, email, password });
+		const res = await api.post('/users', formData);
 
 		dispatch({
 			type: REGISTER_SUCCESS,
@@ -91,7 +75,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // logout / clear profile
-
 export const logout = () => (dispatch) => {
+	dispatch({ type: CLEAR_PROFILE });
 	dispatch({ type: LOGOUT });
 };
