@@ -17,6 +17,7 @@ import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import Post from './components/post/Post';
 import Posts from './components/posts/Posts';
+import NotFound from './components/layout/NotFound';
 
 import PrivateRoute from './components/routing/PrivateRoute';
 
@@ -53,7 +54,9 @@ const App = () => {
 			<Router>
 				<Fragment>
 					<Navbar />
+					<Route exact path='/!' component={Landing} />
 					<Route exact path='/' component={Landing} />
+
 					<section className='container'>
 						<Alert />
 						<Switch>
@@ -84,6 +87,7 @@ const App = () => {
 							<PrivateRoute exact path='/posts' component={Posts} />
 							<PrivateRoute exact path='/posts/:id' component={Post} />
 							<PrivateRoute exact path='/dashboard' component={Dashboard} />
+							<Route component={NotFound} />
 						</Switch>
 					</section>
 				</Fragment>
